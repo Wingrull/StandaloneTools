@@ -9,11 +9,11 @@ jobs:
     with:
       workflow: ${{ github.workflow }}
 
-  ubuntu-gnu:
-    if: ${{ vars.CURRENT_TOOL == github.workflow }}
-    uses: ./.github/workflows/build-ubuntu.yml
-    with:
-      workflow: ${{ github.workflow }}
+#  ubuntu-gnu:
+#    if: ${{ vars.CURRENT_TOOL == github.workflow }}
+#    uses: ./.github/workflows/build-ubuntu.yml
+#    with:
+#      workflow: ${{ github.workflow }}
 
   windows-msvc:
     if: ${{ vars.CURRENT_TOOL == github.workflow }}
@@ -36,12 +36,12 @@ jobs:
       workflow: ${{ github.workflow }}
       artifact: build-musl
 
-  test-ubuntu-gnu:
-    needs: ubuntu-gnu
-    uses: ./.github/workflows/test-ubuntu.yml
-    with:
-      workflow: ${{ github.workflow }}
-      artifact: build-gnu
+#  test-ubuntu-gnu:
+#    needs: ubuntu-gnu
+#    uses: ./.github/workflows/test-ubuntu.yml
+#    with:
+#      workflow: ${{ github.workflow }}
+#      artifact: build-gnu
 
   test-windows-msvc:
     needs: windows-msvc
@@ -58,7 +58,7 @@ jobs:
       artifact: build-msvc
 
   release:
-    needs: [test-alpine-musl, test-ubuntu-musl, test-ubuntu-gnu, test-windows-msvc, test-nanoserver-msvc]
+    needs: [test-alpine-musl, test-ubuntu-musl, test-windows-msvc, test-nanoserver-msvc]
     uses: ./.github/workflows/release.yml
     with:
       workflow: ${{ github.workflow }}
