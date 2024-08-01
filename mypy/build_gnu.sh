@@ -6,8 +6,8 @@ apt update
 apt install -y wget binutils
 
 tool_name="mypy"
-tool_version="1.8.0"
-self_name="python-3.11.3"
+tool_version="1.11.0"
+self_name="python-3.12.2"
 self_toolset_name="build-gnu"
 
 release_version_dirpath="$dp0/release/$tool_name-$tool_version"
